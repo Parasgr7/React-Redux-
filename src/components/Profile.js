@@ -4,6 +4,10 @@ import Warning from '../components/Warning';
 import Home from './Home';
 import {User} from './User';
 import {Provider} from './Context';
+import Post from './Post';
+import {connect} from 'react-redux';
+import Guest from './Guest.js'
+import Card from './Card.js'
 
 class Profile extends Component  {
   constructor(props){
@@ -28,6 +32,7 @@ class Profile extends Component  {
   }
 
   render(){
+    console.log(this.props);
     const message = this.state.message;
     const contextMesasge = {message: message, secret: this.state.count, handleClick: this.handleClick,changeMessage: this.changeMessage};
   return (
@@ -56,12 +61,12 @@ class Profile extends Component  {
       </Col>
       <Col>
         <Alert variant="danger">
-        Second
+        <Post />
         </Alert>
       </Col>
       <Col>
         <Alert variant="info">
-          Third colummn
+          <Guest post={this.props.post ? this.props.post: {id: 1, name: "First class", description: "new one out"}}/>
         </Alert>
       </Col>
     </Row>
@@ -69,4 +74,10 @@ class Profile extends Component  {
   )}
 }
 
-export default Profile;
+const mapStateToProps=(state,ownProps)=>{
+  let id = ownProps.match.params.user_id;
+  return{
+    post: state.posts.find(post=> post.id==id)
+  }
+}
+export default connect(mapStateToProps)(Profile);

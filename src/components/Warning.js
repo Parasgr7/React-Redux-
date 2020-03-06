@@ -10,7 +10,6 @@ class Warning extends Component  {
 
   componentDidUpdate() {
     // Advantage of static contextType: We can now also access Context in the rest of the component
-    console.log(this.context.secret)
   }
   handleChange=(click,changeMessage,e)=>{
     changeMessage(e.target.value)

@@ -1,39 +1,39 @@
 import React, { Component } from 'react';
 import {Jumbotron,Button } from 'react-bootstrap';
+import {connect} from 'react-redux';
 
+import {
+  Link,
+} from "react-router-dom";
 
 class Guest extends Component  {
   constructor(props){
     super(props)
-    console.log('from constructor');
-
-    this.handleClick = this.handleClick.bind(this);
-    this.state = {
-      count :0
-    }
+    this.handleClick = this.handleClick.bind(this)
   }
-  handleClick = (count,e) =>{
-    if (e.key==='a')
-    {this.setState({count: count+1})}
-    else if (e.key==='b') {
-      this.setState({count: count-1})
-    }
+  handleClick = (id) =>{
+    this.props.delete(id)
   }
   render(){
   return (
-    <div class="container-fluid">
+    <div className="container-fluid">
     <Jumbotron>
-    <h1>Hello, Guest!</h1>
+    <h1>{this.props.post.name}!</h1>
     <p>
-      This is a simple hero unit, a simple jumbotron-style component for calling
-      extra attention to featured content or information.
+      {this.props.post.description}
     </p>
     <p>
-      <Button variant="primary">Learn more</Button>
+      <Button variant="danger" onClick={() => this.handleClick(this.props.post.id)}>Delete</Button>
     </p>
   </Jumbotron>
   </div>
   )}
 }
 
-export default Guest;
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    delete: (id) =>{ dispatch({type: 'DELETE', id: id}) }
+  }
+}
+
+export default connect(null,mapDispatchToProps)(Guest);

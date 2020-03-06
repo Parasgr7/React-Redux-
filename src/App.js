@@ -11,6 +11,7 @@ import {User} from './components/User';
 import Guest from './components/Guest';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import Post from './components/Post';
 
 
 function App() {
@@ -43,18 +44,11 @@ function App() {
         </nav>
 
         <Switch>
-          <Route path="/guest">
-            <Guest />
-          </Route>
-          <Route path="/users/:user_id">
-            <Profile />
-          </Route>
-          <Route path="/users">
-            <User />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route path="/guest" component={Post} />
+          <Route exact={true} path="/users" component={User} />
+          <Route path="/users/:user_id" component={Profile} />
+          <Route path="/" component={Home} />
+
         </Switch>
       </div>
     </Router>

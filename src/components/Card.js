@@ -1,0 +1,31 @@
+import React,{useState,Component} from 'react';
+import { Alert,Row,Col,Button } from 'react-bootstrap';
+import {
+  Link,
+} from "react-router-dom";
+
+class Card extends Component  {
+  render(){
+  return (
+      <div className="container-fluid">
+        <Row>
+          <Col>
+            <Alert variant="danger">
+              <Alert.Heading>{this.props.post.name}!</Alert.Heading>
+              <p>
+                {this.props.post.description}
+              </p>
+              <hr />
+              <p className="mb-0">
+                <Link to={"/users/"+this.props.post.id}>
+                  <Button variant="primary">Click me</Button>
+                </Link>
+              </p>
+            </Alert>
+          </Col>
+        </Row>
+    </div>
+  )};
+}
+
+export default Card;
