@@ -14,8 +14,12 @@ const rootReducer = (state= initState, action) => {
        return {...state,posts: newPosts}
       break;
     case "FETCH_API":
+    return {...state,posts: action.payload}
+    break;
+    case "ERROR_API":
     console.log('hey');
     break;
+
     default:
     break;
 

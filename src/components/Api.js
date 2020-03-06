@@ -8,10 +8,10 @@ class Api extends Component  {
   handleClick=()=>{
     axios.get("https://jsonplaceholder.typicode.com/posts")
     .then((response)=>{
-      console.log(response);
+      this.props.fetch_posts(response.data);
     })
     .catch((err)=>{
-
+      this.props.fetch_error(err)
     })
 
   }
@@ -37,7 +37,8 @@ class Api extends Component  {
 }
 const mapDispatchToProps=(dispatch)=>{
   return{
-    fetch_posts:()=> { dispatch({type: 'FETCH_API'}) }
+    fetch_posts:(data)=> {  dispatch({type: 'FETCH_API', payload: data}) },
+    fetch_error:(err)=> {  dispatch({type: 'ERROR_API', payload: err}) }
   }
 }
 

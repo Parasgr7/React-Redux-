@@ -13,7 +13,7 @@ class Post extends Component  {
     ) : "No posts"
     return(
         <React.Fragment>
-         <h2>POSTS</h2>
+         <h2>POSTS {posts.length}</h2>
          {postList}
         </React.Fragment>
       )}
