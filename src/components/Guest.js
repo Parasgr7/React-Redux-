@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Jumbotron,Button } from 'react-bootstrap';
 import {connect} from 'react-redux';
 
-
 class Guest extends Component  {
   constructor(props){
     super(props)
@@ -15,15 +14,15 @@ class Guest extends Component  {
   return (
     <div className="container-fluid">
     <Jumbotron>
-    <h1>{this.props.post.title}!</h1>
+    <h1>{this.props.post.title?this.props.post.title:"Select a post"}!</h1>
     <p>
       {this.props.post.body}
     </p>
     <p>
-      User_ID: {this.props.post.userId}
+       {this.props.post.userId ? <p>User_ID: this.props.post.userId</p> : ""}
     </p>
     <p>
-      <Button variant="danger" onClick={() => this.handleClick(this.props.post.id)}>Delete</Button>
+      {this.props.post.body ? <Button variant="danger" onClick={() => this.handleClick(this.props.post.id)}>Delete</Button> : ""}
     </p>
   </Jumbotron>
   </div>
