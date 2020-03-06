@@ -1,4 +1,4 @@
-import React,{useState,Component} from 'react';
+import React,{Component} from 'react';
 import { Alert,Row,Col,Button } from 'react-bootstrap';
 import {
   Link,
@@ -11,11 +11,14 @@ class Card extends Component  {
         <Row>
           <Col>
             <Alert variant="danger">
-              <Alert.Heading>{this.props.post.name}!</Alert.Heading>
+              <Alert.Heading>{this.props.post.title}!</Alert.Heading>
               <p>
-                {this.props.post.description}
+                {this.props.post.body}
               </p>
               <hr />
+              <p>
+                User_ID: {this.props.post.userId}
+              </p>
               <p className="mb-0">
                 <Link to={"/users/"+this.props.post.id}>
                   <Button variant="primary">Click me</Button>

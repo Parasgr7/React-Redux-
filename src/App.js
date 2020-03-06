@@ -3,12 +3,10 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
 } from "react-router-dom";
 
 import './App.css';
 import {User} from './components/User';
-import Guest from './components/Guest';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Post from './components/Post';

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { Alert,Container,Row,Jumbotron,Button,Col } from 'react-bootstrap';
+import { Alert,Row,Col } from 'react-bootstrap';
 import Warning from '../components/Warning';
 import Home from './Home';
-import {User} from './User';
 import {Provider} from './Context';
 import Post from './Post';
 import {connect} from 'react-redux';
 import Guest from './Guest.js'
-import Card from './Card.js'
+import Api from './Api.js'
 
 class Profile extends Component  {
   constructor(props){
@@ -32,7 +31,6 @@ class Profile extends Component  {
   }
 
   render(){
-    console.log(this.props);
     const message = this.state.message;
     const contextMesasge = {message: message, secret: this.state.count, handleClick: this.handleClick,changeMessage: this.changeMessage};
   return (
@@ -67,6 +65,11 @@ class Profile extends Component  {
       <Col>
         <Alert variant="info">
           <Guest post={this.props.post ? this.props.post: {id: 1, name: "First class", description: "new one out"}}/>
+        </Alert>
+      </Col>
+      <Col>
+        <Alert variant="info">
+          <Api/>
         </Alert>
       </Col>
     </Row>

@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import {Jumbotron,Button } from 'react-bootstrap';
 import {connect} from 'react-redux';
 
-import {
-  Link,
-} from "react-router-dom";
 
 class Guest extends Component  {
   constructor(props){
@@ -18,9 +15,12 @@ class Guest extends Component  {
   return (
     <div className="container-fluid">
     <Jumbotron>
-    <h1>{this.props.post.name}!</h1>
+    <h1>{this.props.post.title}!</h1>
     <p>
-      {this.props.post.description}
+      {this.props.post.body}
+    </p>
+    <p>
+      User_ID: {this.props.post.userId}
     </p>
     <p>
       <Button variant="danger" onClick={() => this.handleClick(this.props.post.id)}>Delete</Button>

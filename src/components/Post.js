@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import Guest from './Guest.js'
 import Card from './Card.js'
 
 class Post extends Component  {

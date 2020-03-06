@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Consumer} from './Context';
-import {User} from './User';
 
 class Home extends Component  {
   constructor(props){
